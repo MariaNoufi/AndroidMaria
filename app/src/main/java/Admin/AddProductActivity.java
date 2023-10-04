@@ -10,10 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import com.example.mariaproj.Class.Product;
+import com.example.mariaproj.Class.Volunteer;
 import com.example.mariaproj.DataTables.DBHelper;
 import com.example.mariaproj.R;
 import java.io.ByteArrayOutputStream;
@@ -22,10 +21,10 @@ import java.io.IOException;
 public class AddProductActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static int RESULT_LOAD_IMAGE = 1;
-    EditText etname,etdisc,etstock,etsaleprice,etbuyprice;
+    EditText etPlace,etPdescribtion,etrequiredSup,etrequiredNumOfVolunteers,etnumOfRegisteredVolunteers;
     ImageButton imageButton;
     Button btadd;
-    Product p;
+    Volunteer p;
     Uri selectedImageUri;
     DBHelper dbHelper;
     ProgressBar addItemProgressBar;
@@ -33,11 +32,11 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
-        etname = findViewById(R.id.etProdName);
-        etdisc = findViewById(R.id.etDesc);
-        etstock = findViewById(R.id.etStock);
-        etsaleprice = findViewById(R.id.etSalePrice);
-        etbuyprice = findViewById(R.id.etBuyPrice);
+        etPlace = findViewById(R.id.etPlace);
+        etPdescribtion = findViewById(R.id.etPdescribtion);
+        etrequiredSup = findViewById(R.id.etrequiredSup);
+        etrequiredNumOfVolunteers = findViewById(R.id.etrequiredNumOfVolunteers);
+        etnumOfRegisteredVolunteers = findViewById(R.id.etnumOfRegisteredVolunteers);
         imageButton = findViewById(R.id.imageButton);
         btadd = findViewById(R.id.addButton);
         btadd.setOnClickListener(this);
@@ -54,10 +53,10 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
             dbHelper = new DBHelper(this);
 
             byte[] data  = imageViewToByte();
-            p=new Product(etname.getText().toString(),etdisc.getText().toString(),
-                    Integer.parseInt(etstock.getText().toString()),
-                    Double.parseDouble(etsaleprice.getText().toString()),
-                    Double.parseDouble(etbuyprice.getText().toString()),data);
+            p=new Volunteer(etPlace.getText().toString(),etPdescribtion.getText().toString(),
+                    String.join(etrequiredSup.getText().toString()),
+                    Double.parseDouble(etrequiredNumOfVolunteers.getText().toString()),
+                    Double.parseDouble(etnumOfRegisteredVolunteers.getText().toString()),data);
             dbHelper.OpenWriteAble();
             if(p.Add(dbHelper.getDb())>-1){
                 Toast.makeText(this, "Added Successfully", Toast.LENGTH_SHORT).show();

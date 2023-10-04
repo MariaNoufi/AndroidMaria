@@ -1,18 +1,14 @@
 package com.example.mariaproj.Class;
 
 import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.*;
-import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.*;
 
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 import android.provider.BaseColumns;
 
-import com.example.mariaproj.DataTables.TablesString;
-
-public class Product implements SqlInterface{
+public class Volunteer implements SqlInterface{
 
     //region Attribute
     protected int pid;
@@ -26,7 +22,7 @@ public class Product implements SqlInterface{
     //endregion
 
     //region Constructors
-    public Product(String place,String Pdescribtion ,String requiredSup,double requiredNumOfVolunteers,double numOfRegisteredVolunteers,byte[] image){
+    public Volunteer(String place, String Pdescribtion , String requiredSup, double requiredNumOfVolunteers, double numOfRegisteredVolunteers, byte[] image){
         this.requiredNumOfVolunteers=requiredNumOfVolunteers;
         this.numOfRegisteredVolunteers=numOfRegisteredVolunteers;
         this.place=place;

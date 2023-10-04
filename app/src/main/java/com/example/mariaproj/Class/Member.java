@@ -1,24 +1,24 @@
 package com.example.mariaproj.Class;
 
-import static com.example.mariaproj.DataTables.TablesString.CartTable.*;
+import static com.example.mariaproj.DataTables.TablesString.MemberTable.*;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-public class Cart implements SqlInterface{
+public class Member implements SqlInterface{
 
     //region Attribute
-    private int cartid;
-    private String uid;
-    private int prodid;
+    private String Members;
+    private String VID;
+    private String UID;
     //endregion
 
     //region Constructors
-    public Cart(int cartid,String uid,int pid){
-        this.cartid=cartid;
-        this.uid = uid;
-        prodid = pid;
+    public Member(String Members, String VID, String UID){
+        this.Members=Members;
+        this.VID = VID;
+        this.UID = UID;
     }
     //endregion
 
@@ -27,11 +27,11 @@ public class Cart implements SqlInterface{
     public long Add(SQLiteDatabase db) {
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(COLUMN_PRODUCT_ID, prodid);
-        values.put(COLUMN_USER_ID, uid);
+        values.put(COLUMN_USER_ID, UID);
+        values.put(COLUMN_VOLUNTEER_ID, VID);
 
 // Insert the new row, returning the primary key value of the new row
-        return db.insert(TABLE_CART, null, values);
+        return db.insert(TABLE_MEMBER, null, values);
     }
 
     @Override
@@ -40,22 +40,22 @@ public class Cart implements SqlInterface{
 // Specify arguments in placeholder order.
         String[] selectionArgs = {id+""};
 // Issue SQL statement.
-        return db.delete(TABLE_CART, selection, selectionArgs);
+        return db.delete(TABLE_MEMBER, selection, selectionArgs);
     }
 
     @Override
     public int Update(SQLiteDatabase db, int id) {
         // New value for one column
         ContentValues values = new ContentValues();
-        values.put(COLUMN_PRODUCT_ID, prodid);
-        values.put(COLUMN_USER_ID, uid);
+        values.put(COLUMN_USER_ID, UID);
+        values.put(COLUMN_VOLUNTEER_ID, VID);
 
 // Which row to update, based on the title
         String selection = BaseColumns._ID + " LIKE ?";
         String[] selectionArgs = { id+"" };
 
         return  db.update(
-                TABLE_CART,
+                TABLE_MEMBER,
                 values,
                 selection,
                 selectionArgs);
@@ -65,13 +65,13 @@ public class Cart implements SqlInterface{
     public Cursor Select(SQLiteDatabase db) {
         String[] projection = {
                 BaseColumns._ID,
-                COLUMN_PRODUCT_ID,
-                COLUMN_USER_ID
+                COLUMN_USER_ID,
+                COLUMN_VOLUNTEER_ID
         };
 // How you want the results sorted in the resulting Cursor
         String sortOrder =
                 BaseColumns._ID + " DESC";
-        Cursor c = db.query(TABLE_CART,
+        Cursor c = db.query(TABLE_MEMBER,
                 projection,
                 null,
                 null,
@@ -83,14 +83,14 @@ public class Cart implements SqlInterface{
     public Cursor SelectByUserId(SQLiteDatabase db, int userid) {
         String[] projection = {
                 BaseColumns._ID,
-                COLUMN_PRODUCT_ID,
-                COLUMN_USER_ID
+                COLUMN_USER_ID,
+                COLUMN_VOLUNTEER_ID
         };
         String selection = BaseColumns._ID + " = ?";
         String[] selectionArgs = { userid+"" };
 
 // How you want the results sorted in the resulting Cursor
-        Cursor c = db.query(TABLE_CART,
+        Cursor c = db.query(TABLE_MEMBER,
                 projection,
                 null,
                 null,
@@ -102,28 +102,28 @@ public class Cart implements SqlInterface{
     //endregion
 
     //region Getter and Setter
-    public int getCartid() {
-        return cartid;
+    public String getMembers() {
+        return Members;
     }
 
-    public void setCartid(int cartid) {
-        this.cartid = cartid;
+    public void setMembers(String Members) {
+        this.Members = Members;
+    }
+
+    public String getVid() {
+        return VID;
+    }
+
+    public void setVid(String VID) {
+        this.VID =VID;
     }
 
     public String getUid() {
-        return uid;
+        return UID;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    public int getProdid() {
-        return prodid;
-    }
-
-    public void setProdid(int prodid) {
-        this.prodid = prodid;
+    public void setUid(String UID) {
+        this.UID = UID;
     }
 
     //endregion

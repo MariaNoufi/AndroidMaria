@@ -1,7 +1,7 @@
 package com.example.mariaproj.DataTables;
 
 import static com.example.mariaproj.DataTables.QueryString.*;
-import static com.example.mariaproj.DataTables.TablesString.ProductTable.*;
+import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.*;
 
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;

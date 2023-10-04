@@ -15,10 +15,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_camera_alt_24" />
+        app:srcCompat="@drawable/baseline_notification_important_24" />
 
     <EditText
-        android:id="@+id/etProdName"
+        android:id="@+id/etPlace"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
@@ -31,33 +31,35 @@
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
     <EditText
-        android:id="@+id/etDesc"
+        android:id="@+id/etPdescribtion"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="description"
+        android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etProdName" />
+        app:layout_constraintTop_toBottomOf="@+id/etPlace" />
 
     <EditText
-        android:id="@+id/etStock"
+        android:id="@+id/etrequiredSup"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="numberDecimal"
         android:hint="Stock"
+        android:inputType="numberDecimal"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/etPdescribtion" />
 
     <EditText
-        android:id="@+id/etSalePrice"
+        android:id="@+id/etrequiredNumOfVolunteers"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="43dp"
@@ -67,10 +69,10 @@
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etStock" />
+        app:layout_constraintTop_toBottomOf="@+id/etrequiredSup" />
 
     <EditText
-        android:id="@+id/etBuyPrice"
+        android:id="@+id/etnumOfRegisteredVolunteers"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="31dp"
@@ -80,7 +82,7 @@
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSalePrice" />
+        app:layout_constraintTop_toBottomOf="@+id/etrequiredNumOfVolunteers" />
 
     <Button
         android:id="@+id/addButton"
@@ -92,7 +94,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etBuyPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/etnumOfRegisteredVolunteers" />
 
     <ProgressBar
         android:id="@+id/addItemProgressBar"
@@ -103,7 +105,7 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etBuyPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/etnumOfRegisteredVolunteers" />
 
 
 
