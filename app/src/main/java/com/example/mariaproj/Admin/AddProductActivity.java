@@ -40,27 +40,92 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         imageButton = findViewById(R.id.imageButton);
         btadd = findViewById(R.id.addButton);
         btadd.setOnClickListener(this);
+        //change
+        btupdate = findViewById(R.id.btUpdate);
+        btupdate.setOnClickListener(this);
+        btdelete = findViewById(R.id.btDelete);
+        btdelete.setOnClickListener(this);
         imageButton.setOnClickListener(this);
-        addItemProgressBar=findViewById(R.id.addItemProgressBar);
         dbHelper = new DBHelper(this);
-        dbHelper.OpenWriteAble();
+        imageButton.setOnClickListener(this);
+        Intent i = getIntent();
+        if(i.getStringExtra("Selected_Id")==null){
+            btdelete.setVisibility(View.GONE);
+            btupdate.setVisibility(View.GONE);
+        }
+        else {
+            btadd.setVisibility(View.GONE);
+            selectedId = i.getStringExtra("Selected_Id");
+            setProduct();
+        }
+        private void setProduct() {
+
+            dbHelper.OpenReadAble();
+            p=new Product();
+            Cursor c = p.SelectById(dbHelper.getDb(),selectedId);
+            if(c!=null){
+                c.moveToFirst();
+                etname.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_PRODUCT_NAME)));
+                etdisc.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_PRODUCT_DESCRIPTION)));
+                etbuyprice.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_PRODUCT_BUYPRICE)));
+                etsaleprice.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_PRODUCT_SALEPRICE)));
+                etstock.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_PRODUCT_STOCK)));
+                image = c.getBlob(c.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE));
+                Bitmap bm = BitmapFactory.decodeByteArray(image, 0 ,image.length);
+                imageButton.setImageBitmap(bm);
+            }
+            dbHelper.Close();
+
+        }
+        }
 
     }
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.addButton){
+            dbHelper.OpenWriteAble();
             addItemProgressBar.setVisibility(View.VISIBLE);
             dbHelper = new DBHelper(this);
 
             byte[] data  = imageViewToByte();
             p=new Volunteer(etPlace.getText().toString(),etPdescribtion.getText().toString(),
-                    String.join(etrequiredSup.getText().toString()),
+                    Integer.parseInt(etrequiredSup.getText().toString()),
                     Double.parseDouble(etrequiredNumOfVolunteers.getText().toString()),
                     Double.parseDouble(etnumOfRegisteredVolunteers.getText().toString()),data);
             dbHelper.OpenWriteAble();
             if(p.Add(dbHelper.getDb())>-1){
                 Toast.makeText(this, "Added Successfully", Toast.LENGTH_SHORT).show();
                 dbHelper.Close();
+
+                Intent i = new Intent(this,ShowProduct.class);
+                startActivity(i);
+            }
+
+            if(view.getId()==R.id.btUpdate){
+                p.setPid(Integer.parseInt(selectedId));
+                p.setProdname(etname.getText().toString());
+                p.setProddisc(etdisc.getText().toString());
+                p.setBuyprice(Double.parseDouble(etbuyprice.getText().toString()));
+                p.setSaleprice(Double.parseDouble(etsaleprice.getText().toString()));
+                p.setStock(Integer.parseInt(etstock.getText().toString()));
+                if(SelectedNewImage)
+                    p.setImageByte(imageViewToByte());
+                else
+                    p.setImageByte(image);
+                dbHelper.OpenWriteAble();
+                p.Update(dbHelper.getDb(),selectedId);
+                dbHelper.Close();
+                Toast.makeText(this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this,ShowProduct.class);
+                startActivity(i);
+            }
+            if(view.getId()==R.id.btDelete){
+                dbHelper.OpenWriteAble();
+                p.Delete(dbHelper.getDb(),selectedId);
+                dbHelper.Close();
+                Toast.makeText(this, "Deleted Successfully", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this,ShowProduct.class);
+                startActivity(i);
             }
 
         }
@@ -83,6 +148,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         return baos.toByteArray();
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -90,6 +156,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         if (resultCode == RESULT_OK && requestCode == 1){
             selectedImageUri = data.getData();
             imageButton.setImageURI(selectedImageUri);
+            SelectedNewImage = true;
         }
     }
 }

@@ -16,6 +16,9 @@
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
+            android:name=".Admin.AddProductActivity"
+            android:exported="false" />
+        <activity
             android:name=".LogInActivity"
             android:exported="false" />
         <activity

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,8 @@ public class SignUpActivity extends AppCompatActivity {
     EditText PasswordCT;
     Button RegisterBT;
     TextView errorT;
+    EditText admincode;
+    Switch isadmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +73,11 @@ public class SignUpActivity extends AppCompatActivity {
             errorT.setText("password dosn't match");
             return;
         }
+        if(isadmin.isChecked() && !admincode.getText().toString().equals("13579")) {
+            errorT.setVisibility(View.VISIBLE);
+            errorT.setText("admin code is incorrect");
+            return;
+        }
         final FirebaseAuth mAuth=FirebaseAuth.getInstance();
         mAuth.createUserWithEmailAndPassword(emailT.getText().toString(),PasswordT.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -79,8 +87,12 @@ public class SignUpActivity extends AppCompatActivity {
 
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                    .setDisplayName(NameT.getText().toString())
+                            String name=fullNameEditText.getText().toString();
+                            if(isadmin.isChecked()){
+                                name = "admin: "+name;
+                            }
+                            UserProfileChangeRequest  profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(name)
                                     .build();
 
                             user.updateProfile(profileUpdates)

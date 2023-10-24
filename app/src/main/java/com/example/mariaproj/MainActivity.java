@@ -14,6 +14,11 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mariaproj.Admin.AddProductActivity;
+import com.example.mariaproj.User.HomeFragment;
+import com.example.mariaproj.User.InfoFragment;
+import com.example.mariaproj.User.NotificationFragment;
+import com.example.mariaproj.User.ShoppingFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +41,10 @@ TextView username,email;
         navigationView.setNavigationItemSelectedListener(this);
         FirebaseUser user = fauth.getCurrentUser();
         if(user !=null){
+            if(user.getDisplayName().startsWith("admin:")){
+                Intent i = new Intent(MainActivity.this, ShowProduct.class);
+                startActivity(i);
+            }
             
             // user is signed in
             View header = navigationView.getHeaderView(0);
@@ -46,7 +55,7 @@ TextView username,email;
         }
         else{
            // no user is signed in
-           Intent i =new Intent(MainActivity.this, LogInActivity.class);
+           Intent i =new Intent(MainActivity.this, AddProductActivity.class);
            startActivity(i);
         }
 
