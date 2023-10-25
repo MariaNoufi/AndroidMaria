@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -18,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
     EditText NameT;
     EditText emailT;
     EditText PasswordT;
@@ -39,6 +40,9 @@ public class SignUpActivity extends AppCompatActivity {
         RegisterBT=findViewById(R.id.btRegister);
         errorT=findViewById(R.id.tvErrorMsg);
         errorT.setVisibility(View.GONE);
+        isadmin = findViewById(R.id.swisadmin);
+        isadmin.setOnCheckedChangeListener(this);
+        admincode = findViewById(R.id.etadmincode);
         RegisterBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +91,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            String name=fullNameEditText.getText().toString();
+                            String name=NameT.getText().toString();
                             if(isadmin.isChecked()){
                                 name = "admin: "+name;
                             }
@@ -114,5 +118,14 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        if(isadmin.isChecked())
+            admincode.setVisibility(View.VISIBLE);
+
+        else
+            admincode.setVisibility(View.GONE);
     }
 }

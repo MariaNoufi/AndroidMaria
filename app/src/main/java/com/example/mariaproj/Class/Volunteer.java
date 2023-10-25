@@ -30,6 +30,10 @@ public class Volunteer implements SqlInterface{
         this.requiredSup=requiredSup;
         this.imageByte = image;
     }
+
+    public Volunteer() {
+
+    }
     //endregion
 
     //region Add,Delete,Update,Select Sql
@@ -111,18 +115,18 @@ public class Volunteer implements SqlInterface{
     public Cursor SelectById(SQLiteDatabase db,String id) {
         String[] projection = {
                 BaseColumns._ID,
-                COLUMN_PRODUCT_NAME,
-                COLUMN_PRODUCT_DESCRIPTION,
+                COLUMN_VOLUNTEER_PLACE,
+                COLUMN_PLACE_DESCRIPTION,
+                COLUMN_REQUIRED_SUPPLIES,
+                COLUMN_NUM_OF_VOLUNTEERS,
                 COLUMN_PRODUCT_IMAGE,
-                COLUMN_PRODUCT_STOCK,
-                COLUMN_PRODUCT_SALEPRICE,
-                COLUMN_PRODUCT_BUYPRICE
+                COLUMN_REGISTERED_VOLUNTEERS,
         };
         String selection = BaseColumns._ID + " = ?";
         String[] selectionArgs = {id};
 
         Cursor c = db.query(
-                TABLE_PRODUCT,   // The table to query
+                TABLE_VOLUNTEER,   // The table to query
                 projection,             // The array of columns to return (pass null to get all)
                 selection,              // The columns for the WHERE clause
                 selectionArgs,          // The values for the WHERE clause
@@ -176,6 +180,16 @@ public class Volunteer implements SqlInterface{
     public void setNumOfRegisteredVolunteers(double numOfRegisteredVolunteers) {
         this.numOfRegisteredVolunteers =numOfRegisteredVolunteers;
     }
+    public void setImageByte(byte[] imageByte) {
+        this.imageByte = imageByte;
+    }
+
+
+    public byte[] getImageByte() {
+        return imageByte;
+    }
+
+
     //endregion
 
 }

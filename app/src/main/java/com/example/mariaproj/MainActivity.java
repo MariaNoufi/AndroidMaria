@@ -42,7 +42,7 @@ TextView username,email;
         FirebaseUser user = fauth.getCurrentUser();
         if(user !=null){
             if(user.getDisplayName().startsWith("admin:")){
-                Intent i = new Intent(MainActivity.this, ShowProduct.class);
+                Intent i = new Intent(MainActivity.this, AddProductActivity.class);
                 startActivity(i);
             }
             
@@ -55,7 +55,7 @@ TextView username,email;
         }
         else{
            // no user is signed in
-           Intent i =new Intent(MainActivity.this, AddProductActivity.class);
+           Intent i =new Intent(MainActivity.this, LogInActivity.class);
            startActivity(i);
         }
 
