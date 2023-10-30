@@ -77,7 +77,7 @@ public class SignUpActivity extends AppCompatActivity implements CompoundButton.
             errorT.setText("password dosn't match");
             return;
         }
-        if(isadmin.isChecked() && !admincode.getText().toString().equals("13579")) {
+        if(isadmin.isChecked() && !admincode.getText().toString().equals("33333")) {
             errorT.setVisibility(View.VISIBLE);
             errorT.setText("admin code is incorrect");
             return;

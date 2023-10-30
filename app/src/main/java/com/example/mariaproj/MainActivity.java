@@ -14,7 +14,9 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mariaproj.Admin.AddProductActivity;
+
+
+import com.example.mariaproj.Admin.AddVolunteerPlace;
 import com.example.mariaproj.User.HomeFragment;
 import com.example.mariaproj.User.InfoFragment;
 import com.example.mariaproj.User.NotificationFragment;
@@ -42,7 +44,7 @@ TextView username,email;
         FirebaseUser user = fauth.getCurrentUser();
         if(user !=null){
             if(user.getDisplayName().startsWith("admin:")){
-                Intent i = new Intent(MainActivity.this, AddProductActivity.class);
+                Intent i = new Intent(MainActivity.this, AddVolunteerPlace.class);
                 startActivity(i);
             }
             

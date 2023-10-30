@@ -13,8 +13,6 @@
     <com.google.android.material.imageview.ShapeableImageView
         android:layout_height="80dp"
         android:layout_width="80dp"
-        app:shapeAppearanceOverlay="@style/RoundCorner"
-        android:src="@drawable/a"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:scaleType="centerCrop"
@@ -35,7 +33,8 @@
         android:text="Candidate Biden Called Saudi Arabia a Paeefr eefr"
         android:textColor="@color/black"/>
 
-    <View android:background="@color/underline"
+    <View
+        android:background="@color/black"
         android:layout_height="1dp"
         android:layout_width="match_parent"
         app:layout_constraintStart_toStartOf="parent"

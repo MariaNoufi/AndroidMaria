@@ -1,6 +1,7 @@
 package com.example.mariaproj.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -14,9 +15,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
 import com.example.mariaproj.Class.Volunteer;
 import com.example.mariaproj.DataTables.DBHelper;
 import com.example.mariaproj.R;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
@@ -27,8 +30,7 @@ import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.COLUM
 import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.COLUMN_REQUIRED_SUPPLIES;
 import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.COLUMN_VOLUNTEER_PLACE;
 
-public class AddProductActivity extends AppCompatActivity implements View.OnClickListener {
-
+public class AddVolunteerPlace extends AppCompatActivity implements View.OnClickListener {
     private static int RESULT_LOAD_IMAGE = 1;
     EditText etPlace,etPdescribtion,etrequiredSup,etrequiredNumOfVolunteers,etnumOfRegisteredVolunteers;
     ImageButton imageButton;
@@ -36,14 +38,14 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
     Volunteer volunteer;
     Uri selectedImageUri;
     DBHelper dbHelper;
-    String selectedId="";
+    String selectedId= " ";
     byte[] image;
     boolean SelectedNewImage = false;
     ProgressBar addItemProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_product);
+        setContentView(R.layout.activity_add_volunteer_place);
         etPlace = findViewById(R.id.etPlace);
         etPdescribtion = findViewById(R.id.etPdescribtion);
         etrequiredSup = findViewById(R.id.etrequiredSup);
@@ -70,7 +72,6 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
             selectedId = i.getStringExtra("Selected_Id");
             setProduct();
         }
-
     }
     private void setProduct() {
 
@@ -91,6 +92,19 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         dbHelper.Close();
 
     }
+    public byte[] imageViewToByte() {
+        Bitmap bitmap = null;
+        try {
+            bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver() ,selectedImageUri);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        return baos.toByteArray();
+    }
+
     @Override
     public void onClick(View view) {
         if(view.getId()==R.id.addButton){
@@ -125,19 +139,19 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
                 else
                     volunteer.setImageByte(image);
                 dbHelper.OpenWriteAble();
-                volunteer.Update(dbHelper.getDb(),selectedId);
+                volunteer.Update(dbHelper.getDb(),Integer.parseInt(selectedId));
                 dbHelper.Close();
                 Toast.makeText(this, "Updated Successfully", Toast.LENGTH_SHORT).show();
-               // Intent i = new Intent(this,ShowProduct.class);
+                // Intent i = new Intent(this,ShowProduct.class);
                 // startActivity(i);
             }
             if(view.getId()==R.id.btDelete){
                 dbHelper.OpenWriteAble();
-                volunteer.Delete(dbHelper.getDb(),selectedId);
+                volunteer.Delete(dbHelper.getDb(),Integer.parseInt(selectedId));
                 dbHelper.Close();
                 Toast.makeText(this, "Deleted Successfully", Toast.LENGTH_SHORT).show();
-               // Intent i = new Intent(this,ShowProduct.class);
-               // startActivity(i);
+                // Intent i = new Intent(this,ShowProduct.class);
+                // startActivity(i);
             }
 
         }
@@ -147,20 +161,6 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
             startActivityForResult(gallery, RESULT_LOAD_IMAGE);
         }
     }
-    public byte[] imageViewToByte() {
-        Bitmap bitmap = null;
-        try {
-            bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver() ,selectedImageUri);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        return baos.toByteArray();
-    }
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 

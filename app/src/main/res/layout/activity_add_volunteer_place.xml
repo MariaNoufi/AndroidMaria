@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/constraint"
-    tools:context=".Admin.AddProductActivity">
+    tools:context=".Admin.AddVolunteerPlace">
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -23,8 +23,8 @@
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:ems="10"
+        android:hint="Place"
         android:inputType="textPersonName"
-        android:hint="name"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Stock"
+        android:hint="Required supplies for the place"
         android:inputType="numberDecimal"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,9 +64,9 @@
         android:layout_height="48dp"
         android:layout_marginTop="43dp"
         android:ems="10"
-        android:hint="Sale Price"
-        android:textAlignment="center"
+        android:hint="required number of volunteers"
         android:inputType="numberDecimal"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etrequiredSup" />
@@ -76,10 +76,10 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="31dp"
-        android:hint="Buy Price"
-        android:textAlignment="center"
         android:ems="10"
+        android:hint="Number of registered volunteers"
         android:inputType="numberDecimal"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etrequiredNumOfVolunteers" />
@@ -111,8 +111,8 @@
         android:id="@+id/btDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="80dp"
-        android:layout_marginTop="66dp"
+        android:layout_marginEnd="196dp"
+        android:layout_marginTop="64dp"
         android:text="delete"
         app:layout_constraintEnd_toStartOf="@+id/btUpdate"
         app:layout_constraintTop_toBottomOf="@+id/etnumOfRegisteredVolunteers" />
@@ -121,10 +121,11 @@
         android:id="@+id/btUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="66dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginTop="64dp"
         android:text="update"
-        app:layout_constraintTop_toBottomOf="@+id/etnumOfRegisteredVolunteers"
-        tools:layout_editor_absoluteX="244dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etnumOfRegisteredVolunteers" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

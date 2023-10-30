@@ -39,8 +39,8 @@ public class ShowProduct extends AppCompatActivity implements AdapterView.OnItem
         db = new DBHelper(getApplicationContext());
         volunteer= new Volunteer();
         getProductToArray();
-        ListAdapter adapter = new ListAdapter(this,place_info);
-        volunteerListview.setAdapter(adapter);
+       // ListAdapter adapter = new ListAdapter(this,place_info);
+        //volunteerListview.setAdapter(adapter);
 
     }
     public void getProductToArray(){
@@ -48,7 +48,7 @@ public class ShowProduct extends AppCompatActivity implements AdapterView.OnItem
         Cursor c = volunteer.Select(db.getDb());
         if(c.getCount()>0){
             product_string = new String[c.getCount()];
-            place_info =  new Volunteer[][c.getCount()];
+            place_info =  new Volunteer[c.getCount()];
             int i =0;
             c.moveToFirst();
             while(!c.isAfterLast()){
@@ -80,14 +80,14 @@ public class ShowProduct extends AppCompatActivity implements AdapterView.OnItem
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         selected_product = place_info[i];
-        Intent in = new Intent(this, AddProductActivity.class);
+        Intent in = new Intent(this, AddVolunteerPlace.class);
         in.putExtra("Selected_Id", selected_product.getPid()+"");
         startActivity(in);
     }
 
     @Override
     public void onClick(View view) {
-        Intent in = new Intent(this, AddProductActivity.class);
+        Intent in = new Intent(this, AddVolunteerPlace.class);
         startActivity(in);
     }
     @Override
