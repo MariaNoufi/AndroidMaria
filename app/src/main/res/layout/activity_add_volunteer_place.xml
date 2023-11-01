@@ -51,7 +51,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Required supplies for the place"
-        android:inputType="numberDecimal"
+        android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
