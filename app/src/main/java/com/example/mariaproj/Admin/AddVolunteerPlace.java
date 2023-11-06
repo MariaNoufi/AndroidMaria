@@ -109,7 +109,6 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
     public void onClick(View view) {
         if(view.getId()==R.id.addButton){
             dbHelper.OpenWriteAble();
-            addItemProgressBar.setVisibility(View.VISIBLE);
             dbHelper = new DBHelper(this);
 
             byte[] data  = imageViewToByte();

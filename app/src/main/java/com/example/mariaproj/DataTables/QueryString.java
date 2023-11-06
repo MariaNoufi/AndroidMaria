@@ -11,8 +11,8 @@ public class QueryString {
                     VolunteerTable.COLUMN_PLACE_DESCRIPTION  + " TEXT," +
                     VolunteerTable.COLUMN_REGISTERED_VOLUNTEERS+ " DOUBLE,"+
                     VolunteerTable.COLUMN_NUM_OF_VOLUNTEERS+ " DOUBLE,"+
-                    VolunteerTable.COLUMN_PRODUCT_IMAGE + " BLOB);"+
-                    VolunteerTable.COLUMN_REQUIRED_SUPPLIES + " Text,";
+                    VolunteerTable.COLUMN_PRODUCT_IMAGE + " BLOB,"+
+                    VolunteerTable.COLUMN_REQUIRED_SUPPLIES + " Text);";
 
 
 
