@@ -188,8 +188,9 @@ public class Volunteer implements SqlInterface{
     public byte[] getImageByte() {
         return imageByte;
     }
-
-
+    @Override
+    public String toString(){return place; }
     //endregion
 
 }
+

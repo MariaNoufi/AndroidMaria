@@ -8,12 +8,10 @@ import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.*;
 
-import com.example.mariaproj.Class.ListAdapter;
 import com.example.mariaproj.Class.*;
 import com.example.mariaproj.DataTables.DBHelper;
 
@@ -39,8 +37,8 @@ public class ShowProduct extends AppCompatActivity implements AdapterView.OnItem
         db = new DBHelper(getApplicationContext());
         volunteer= new Volunteer();
         getProductToArray();
-       // ListAdapter adapter = new ListAdapter(this,place_info);
-        //volunteerListview.setAdapter(adapter);
+        ListAdapter adapter = new ListAdapter(this,place_info);
+        volunteerListview.setAdapter(adapter);
 
     }
     public void getProductToArray(){
@@ -59,18 +57,7 @@ public class ShowProduct extends AppCompatActivity implements AdapterView.OnItem
                 volunteer.setRequiredNumOfVolunteers(c.getDouble(c.getColumnIndexOrThrow(COLUMN_NUM_OF_VOLUNTEERS)));
                 volunteer.setNumOfRegisteredVolunteers(c.getInt(c.getColumnIndexOrThrow(COLUMN_REGISTERED_VOLUNTEERS)));
                 volunteer.setImageByte(c.getBlob(c.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE)));
-                //String cat = c.getString(c.getColumnIndexOrThrow(COLUMN_PRODUCT_CATEGORY));
-               /* if(cat.equals("PC"))
-                    product_info[i]=new PC(p);
-                else if(cat.equals("LabTop"))
-                    product_info[i]=new LabTop(p);
-                else if(cat.equals("Printer"))
-                    product_info[i]=new Printer(p);
-                else
-                    product_info[i]=new Other(p);*/
-                // place_info[i]=new Volunteer(volunteer);
-              //  product_string[i++] = volunteer.toString();
-                //c.moveToNext();
+                c.moveToNext();
             }
         }
         db.Close();

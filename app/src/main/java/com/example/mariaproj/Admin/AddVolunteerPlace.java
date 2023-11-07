@@ -122,8 +122,8 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
                 Toast.makeText(this, "Added Successfully", Toast.LENGTH_SHORT).show();
                 dbHelper.Close();
 
-                //Intent i = new Intent(this,ShowProduct.class);
-                //startActivity(i);
+                Intent i = new Intent(this,ShowProduct.class);
+                startActivity(i);
             }
 
             if(view.getId()==R.id.btUpdate){
@@ -141,16 +141,16 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
                 volunteer.Update(dbHelper.getDb(),Integer.parseInt(selectedId));
                 dbHelper.Close();
                 Toast.makeText(this, "Updated Successfully", Toast.LENGTH_SHORT).show();
-                // Intent i = new Intent(this,ShowProduct.class);
-                // startActivity(i);
+                Intent i = new Intent(this,ShowProduct.class);
+                startActivity(i);
             }
             if(view.getId()==R.id.btDelete){
                 dbHelper.OpenWriteAble();
                 volunteer.Delete(dbHelper.getDb(),Integer.parseInt(selectedId));
                 dbHelper.Close();
                 Toast.makeText(this, "Deleted Successfully", Toast.LENGTH_SHORT).show();
-                // Intent i = new Intent(this,ShowProduct.class);
-                // startActivity(i);
+                 Intent i = new Intent(this,ShowProduct.class);
+                 startActivity(i);
             }
 
         }
