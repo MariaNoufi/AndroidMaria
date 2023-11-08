@@ -13,6 +13,9 @@ public class Volunteer implements SqlInterface{
     //region Attribute
     protected int pid;
     protected String place;
+
+
+
     protected String Pdescribtion;
     protected String requiredSup;
 
@@ -33,6 +36,16 @@ public class Volunteer implements SqlInterface{
 
     public Volunteer() {
 
+    }
+
+    public Volunteer(Volunteer volunteer) {
+        pid = volunteer.getPid();
+        place = volunteer.getPlace();
+        Pdescribtion = volunteer.getPdescribtion();
+        numOfRegisteredVolunteers = volunteer.getNumOfRegisteredVolunteers();
+        requiredSup = volunteer.getRequiredSup();
+        requiredNumOfVolunteers = volunteer.getRequiredNumOfVolunteers();
+        imageByte = volunteer.getImageByte();
     }
     //endregion
 
@@ -73,7 +86,7 @@ public class Volunteer implements SqlInterface{
         values.put(COLUMN_REQUIRED_SUPPLIES, requiredSup);
         values.put(COLUMN_REGISTERED_VOLUNTEERS,numOfRegisteredVolunteers);
         values.put(COLUMN_NUM_OF_VOLUNTEERS, requiredNumOfVolunteers);
-        values.put(COLUMN_PRODUCT_IMAGE, imageByte.toString());
+        values.put(COLUMN_PRODUCT_IMAGE, imageByte);
 
 // Which row to update, based on the title
         String selection = BaseColumns._ID + " LIKE ?";
@@ -109,7 +122,7 @@ public class Volunteer implements SqlInterface{
                 null,
                 null,
                 null,
-                sortOrder);
+                null);
         return c;
     }
     public Cursor SelectById(SQLiteDatabase db,String id) {
@@ -190,6 +203,14 @@ public class Volunteer implements SqlInterface{
     }
     @Override
     public String toString(){return place; }
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
     //endregion
 
 }

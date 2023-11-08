@@ -6,10 +6,13 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.BaseColumns;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.*;
 
 import com.example.mariaproj.Class.*;
@@ -24,7 +27,7 @@ public class ShowProduct extends AppCompatActivity implements AdapterView.OnItem
     String [] product_string ;
     DBHelper db;
     Volunteer volunteer;
-    Volunteer[] place_info;
+    Volunteer[] place_info ;
     Volunteer selected_product;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +37,9 @@ public class ShowProduct extends AppCompatActivity implements AdapterView.OnItem
         volunteerListview.setOnItemClickListener(this);
         addnew = findViewById(R.id.btAddNewProd);
         addnew.setOnClickListener(this);
-        db = new DBHelper(getApplicationContext());
+        db = new DBHelper(this);
         volunteer= new Volunteer();
+
         getProductToArray();
         ListAdapter adapter = new ListAdapter(this,place_info);
         volunteerListview.setAdapter(adapter);
@@ -50,17 +54,22 @@ public class ShowProduct extends AppCompatActivity implements AdapterView.OnItem
             int i =0;
             c.moveToFirst();
             while(!c.isAfterLast()){
-                volunteer.setPid(c.getInt(c.getColumnIndexOrThrow(BaseColumns._ID)));
-                volunteer.setActName(c.getString(c.getColumnIndexOrThrow(COLUMN_VOLUNTEER_PLACE)));
-                volunteer.setPdescribtion(c.getString(c.getColumnIndexOrThrow(COLUMN_PLACE_DESCRIPTION)));
-                volunteer.setRequiredSup(c.getString(c.getColumnIndexOrThrow(COLUMN_REQUIRED_SUPPLIES)));
-                volunteer.setRequiredNumOfVolunteers(c.getDouble(c.getColumnIndexOrThrow(COLUMN_NUM_OF_VOLUNTEERS)));
-                volunteer.setNumOfRegisteredVolunteers(c.getInt(c.getColumnIndexOrThrow(COLUMN_REGISTERED_VOLUNTEERS)));
-                volunteer.setImageByte(c.getBlob(c.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE)));
-                c.moveToNext();
+
+                    volunteer.setPid(c.getInt(c.getColumnIndexOrThrow(BaseColumns._ID)));
+                    volunteer.setActName(c.getString(c.getColumnIndexOrThrow(COLUMN_VOLUNTEER_PLACE)));
+                    volunteer.setPdescribtion(c.getString(c.getColumnIndexOrThrow(COLUMN_PLACE_DESCRIPTION)));
+                    volunteer.setRequiredSup(c.getString(c.getColumnIndexOrThrow(COLUMN_REQUIRED_SUPPLIES)));
+                    volunteer.setRequiredNumOfVolunteers(c.getDouble(c.getColumnIndexOrThrow(COLUMN_NUM_OF_VOLUNTEERS)));
+                    volunteer.setNumOfRegisteredVolunteers(c.getInt(c.getColumnIndexOrThrow(COLUMN_REGISTERED_VOLUNTEERS)));
+                    volunteer.setImageByte(c.getBlob(c.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE)));
+                    place_info[i] = new Volunteer(volunteer);
+                    product_string[i++] = volunteer.toString();
+                    c.moveToNext();
+                    volunteer = new Volunteer();
             }
         }
         db.Close();
+
     }
 
 

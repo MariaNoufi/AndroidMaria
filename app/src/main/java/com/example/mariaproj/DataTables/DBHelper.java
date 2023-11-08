@@ -51,7 +51,7 @@ public  class DBHelper {
     }
     public void Reset(){
 
-        dbhelper.onUpgrade(db,1,1);
+        dbhelper.onUpgrade(db,1,2);
     }
     public DBHelper(Context context){
         mContext = context;
