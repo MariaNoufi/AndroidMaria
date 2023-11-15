@@ -25,7 +25,7 @@
             android:layout_height="65dp"
             android:layout_marginEnd="224dp"
             android:layout_marginStart="27dp"
-            android:layout_marginTop="180dp"
+            android:layout_marginTop="176dp"
             android:fontFamily="@font/rowdies"
             android:text="Choose your volunteer place:)"
             android:textColor="#3D4142"
@@ -33,7 +33,7 @@
             android:textSize="20sp"
             app:autoSizeTextType="uniform"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -55,13 +55,15 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="33dp"
         android:fontFamily="@font/roboto_bold"
         android:text="See all"
         android:textColor="#009688"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/textView2"
-        tools:layout_editor_absoluteX="330dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="0dp"
