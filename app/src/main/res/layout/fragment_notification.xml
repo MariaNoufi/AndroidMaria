@@ -23,4 +23,12 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="39dp" />
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Im maria , a student in the ortodox arab college "
+        tools:layout_editor_absoluteX="86dp"
+        tools:layout_editor_absoluteY="167dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
