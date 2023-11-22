@@ -19,7 +19,7 @@ package com.example.mariaproj.Class;
         import androidx.recyclerview.widget.RecyclerView;
 
         import com.example.mariaproj.R;
-
+        import com.example.mariaproj.User.Volunteer_info;
 
 
         import java.util.List;
@@ -87,7 +87,7 @@ public class VolunteerPlacesAdapter extends RecyclerView.Adapter<VolunteerPlaces
         @Override
         public void onClick(View v) {
 
-            Intent intent = new Intent(v.getContext(),ProductInfo.class);
+            Intent intent = new Intent(v.getContext(), Volunteer_info.class);
             intent.putExtra("id",volunteerList.get(getLayoutPosition()).getPid()+"");
             v.getContext().startActivity(intent);
         }
