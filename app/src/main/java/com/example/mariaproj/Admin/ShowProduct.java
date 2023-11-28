@@ -33,6 +33,7 @@ public class ShowProduct extends AppCompatActivity implements AdapterView.OnItem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_product);
+
         volunteerListview = findViewById(R.id.lvproduct);
         volunteerListview.setOnItemClickListener(this);
         addnew = findViewById(R.id.btAddNewProd);
@@ -54,7 +55,6 @@ public class ShowProduct extends AppCompatActivity implements AdapterView.OnItem
             int i =0;
             c.moveToFirst();
             while(!c.isAfterLast()){
-
                     volunteer.setPid(c.getInt(c.getColumnIndexOrThrow(BaseColumns._ID)));
                     volunteer.setActName(c.getString(c.getColumnIndexOrThrow(COLUMN_VOLUNTEER_PLACE)));
                     volunteer.setPdescribtion(c.getString(c.getColumnIndexOrThrow(COLUMN_PLACE_DESCRIPTION)));
@@ -87,9 +87,9 @@ public class ShowProduct extends AppCompatActivity implements AdapterView.OnItem
         startActivity(in);
     }
     @Override
-    public void onStop() {
+    public void onPause() {
         FirebaseAuth fauth = FirebaseAuth.getInstance();
         fauth.signOut();
-        super.onStop();
+        super.onPause();
     }
 }

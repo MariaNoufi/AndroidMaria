@@ -1,12 +1,7 @@
 package com.example.mariaproj.User;
 
 import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.*;
-import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.COLUMN_NUM_OF_VOLUNTEERS;
-import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.COLUMN_PLACE_DESCRIPTION;
-import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.COLUMN_PRODUCT_IMAGE;
-import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.COLUMN_REGISTERED_VOLUNTEERS;
-import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.COLUMN_REQUIRED_SUPPLIES;
-import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.COLUMN_VOLUNTEER_PLACE;
+
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -19,7 +14,7 @@ import android.provider.BaseColumns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
 
 import com.example.mariaproj.Class.Volunteer;
 import com.example.mariaproj.Class.VolunteerPlacesAdapter;

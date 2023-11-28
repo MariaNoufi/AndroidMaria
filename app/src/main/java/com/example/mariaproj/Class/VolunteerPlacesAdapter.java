@@ -29,7 +29,7 @@ public class VolunteerPlacesAdapter extends RecyclerView.Adapter<VolunteerPlaces
     List<Volunteer> volunteerList;
     Context context;
 
-    public VolunteerPlacesAdapter(Context context, List<Volunteer> productList) {
+    public VolunteerPlacesAdapter(Context context, List<Volunteer> volunteerList) {
         this.context = context;
         this.volunteerList = volunteerList;
     }
@@ -48,14 +48,13 @@ public class VolunteerPlacesAdapter extends RecyclerView.Adapter<VolunteerPlaces
         // here we will find the position and start setting the output on our views
 
         String nameofVolunteer= volunteerList.get(position).getPlace();
-        double reuiredParticipantsNum= volunteerList.get(position).getRequiredNumOfVolunteers();
-        double participantsNum= volunteerList.get(position).getNumOfRegisteredVolunteers();
+        double participantsNeeded= volunteerList.get(position).getRequiredNumOfVolunteers()-
+                volunteerList.get(position).getNumOfRegisteredVolunteers();
         byte[] images = volunteerList.get(position).getImageByte();
         Bitmap bm = BitmapFactory.decodeByteArray(images, 0 ,images.length);
 
         holder.nameOfVolunteer.setText(nameofVolunteer);
-        holder.reuiredParticipantsNum.setText(reuiredParticipantsNum+"");
-        holder.participantsNum.setText(participantsNum+"");
+        holder.ParticipantsNeeded.setText(participantsNeeded+"");
         holder. imageOfVolunteer.setImageBitmap(bm);
 
     }
@@ -70,15 +69,14 @@ public class VolunteerPlacesAdapter extends RecyclerView.Adapter<VolunteerPlaces
 
         // here we will find the views on which we will inflate our data
 
-        TextView nameOfVolunteer, reuiredParticipantsNum , participantsNum;
+        TextView nameOfVolunteer, ParticipantsNeeded ;
         ImageView imageOfVolunteer;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             nameOfVolunteer = itemView.findViewById(R.id.place_name);
-            reuiredParticipantsNum = itemView.findViewById(R.id.requiredNumOfVolunteers);
-            participantsNum = itemView.findViewById(R.id.registeredVolnteers);
+            ParticipantsNeeded = itemView.findViewById(R.id.requiredNumOfVolunteers);
             imageOfVolunteer = itemView.findViewById(R.id.place_image);
             itemView.setOnClickListener(this);
 
