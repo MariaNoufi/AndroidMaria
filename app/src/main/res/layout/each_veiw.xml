@@ -5,10 +5,10 @@
     android:id="@+id/eachView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginVertical="8dp"
-    android:layout_marginEnd="8dp"
-    android:background="#B3E8B5">
+    android:background="#44807A">
 
 
     <ImageView
