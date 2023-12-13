@@ -17,15 +17,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
-
+//controll the database
 public  class DBHelper {
+    //define the database name
     private static final String DATABASE_NAME = "Mariadb.db";
     private static final int DATABASE_VERSION = 1;
 
 
     private Context mContext;
     private DataBaseHelper dbhelper;
-    private SQLiteDatabase db;
+    private SQLiteDatabase db;//method with database
 
     public SQLiteDatabase getDb() {
         return db;
@@ -49,6 +50,7 @@ public  class DBHelper {
         }
 
     }
+    //resets the database
     public void Reset(){
 
         dbhelper.onUpgrade(db,1,2);
@@ -57,14 +59,17 @@ public  class DBHelper {
         mContext = context;
         dbhelper = new DataBaseHelper(mContext);
     }
+    //open the database to write in
     public DBHelper OpenWriteAble() throws SQLException{
         db = dbhelper.getWritableDatabase();
         return this;
     }
+    //open the database to read from
     public DBHelper OpenReadAble() throws SQLException{
         db = dbhelper.getReadableDatabase();
         return this;
     }
+    //close the database
 
     public void Close(){
         dbhelper.close();

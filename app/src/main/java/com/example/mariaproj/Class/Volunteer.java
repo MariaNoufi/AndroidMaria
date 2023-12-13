@@ -66,6 +66,7 @@ public class Volunteer implements SqlInterface{
         return db.insert(TABLE_VOLUNTEER, null, values);
 
     }
+    // delete volunteer(place) from database
 
     @Override
     public int Delete(SQLiteDatabase db, int id) {

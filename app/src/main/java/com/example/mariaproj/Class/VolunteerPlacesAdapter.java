@@ -23,6 +23,7 @@ package com.example.mariaproj.Class;
 
 
         import java.util.List;
+        //fill the recycle view with volunteer(place) data
 
 public class VolunteerPlacesAdapter extends RecyclerView.Adapter<VolunteerPlacesAdapter.ViewHolder> {
 
@@ -41,6 +42,7 @@ public class VolunteerPlacesAdapter extends RecyclerView.Adapter<VolunteerPlaces
         return new ViewHolder(view);
 
     }
+    // fill thevolunteer(place) data in the recycle items
 
     @Override
     public void onBindViewHolder( ViewHolder holder, int position) {
@@ -65,6 +67,7 @@ public class VolunteerPlacesAdapter extends RecyclerView.Adapter<VolunteerPlaces
     }
 
     // in order to make our views responsive we can implement onclicklistener on our recyclerview
+    //get the recycle
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         // here we will find the views on which we will inflate our data

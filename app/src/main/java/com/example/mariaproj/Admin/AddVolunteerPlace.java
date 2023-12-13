@@ -43,6 +43,7 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
     byte[] image;
     boolean SelectedNewImage = false;
     ProgressBar addItemProgressBar;
+    /*put the views in the variable-3etsem ya3ni*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +64,9 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
         imageButton.setOnClickListener(this);
         dbHelper = new DBHelper(this);
         imageButton.setOnClickListener(this);
+        /*if we have chosen a volunteer place from show product page
+        *as we make update or delete for the product
+        * if not we add a new volunteer place*/
         Intent i = getIntent();
         if(i.getStringExtra("Selected_Id")==null){
             btdelete.setVisibility(View.GONE);
@@ -74,6 +78,7 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
             setProduct();
         }
     }
+    /*set all product data bin the page and the admin can delete or update*/
     private void setProduct() {
 
         dbHelper.OpenReadAble();
@@ -93,6 +98,7 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
         dbHelper.Close();
 
     }
+    /* casting a bitmap byte[]*/
     public byte[] imageViewToByte() {
         Bitmap bitmap = null;
         try {
@@ -106,8 +112,10 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
         return baos.toByteArray();
     }
 
+
     @Override
     public void onClick(View view) {
+        /*add product to data base*/
         if(view.getId()==R.id.addButton){
             dbHelper.OpenWriteAble();
             dbHelper = new DBHelper(this);
@@ -118,14 +126,15 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
                     etrequiredSup.getText().toString(),
                     Double.parseDouble(etrequiredNumOfVolunteers.getText().toString()),
                     Double.parseDouble(etnumOfRegisteredVolunteers.getText().toString()),data);
-            dbHelper.OpenWriteAble();
-            if(volunteer.Add(dbHelper.getDb())>-1){
+            dbHelper.OpenWriteAble();//open data base for writeable
+            if(volunteer.Add(dbHelper.getDb())>-1){//add to data base
                 Toast.makeText(this, "Added Successfully", Toast.LENGTH_SHORT).show();
                 dbHelper.Close();
-
+                //move to another page
                 Intent i = new Intent(this,ShowProduct.class);
                 startActivity(i);
             }
+            /*update product in the data base*/
 
             if(view.getId()==R.id.btUpdate){
                 volunteer.setPid(Integer.parseInt(selectedId));
@@ -161,6 +170,7 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
             startActivityForResult(gallery, RESULT_LOAD_IMAGE);
         }
     }
+    // put the chosen media in the image button
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 

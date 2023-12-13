@@ -46,6 +46,7 @@ public class ShowProduct extends AppCompatActivity implements AdapterView.OnItem
         volunteerListview.setAdapter(adapter);
 
     }
+    // get all products from the database
     public void getProductToArray(){
         db.OpenReadAble();
         Cursor c = volunteer.Select(db.getDb());
@@ -72,20 +73,24 @@ public class ShowProduct extends AppCompatActivity implements AdapterView.OnItem
 
     }
 
-
+//if we choose a product from the list
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        selected_product = place_info[i];
+        selected_product = place_info[i];// save a chosen product
+        // move to AddVolunteerPlace page
         Intent in = new Intent(this, AddVolunteerPlace.class);
+        // send the chosen product id to AddVolunteerPlace page
         in.putExtra("Selected_Id", selected_product.getPid()+"");
         startActivity(in);
     }
+    //AddVolunteerPlace button clicked
 
     @Override
     public void onClick(View view) {
         Intent in = new Intent(this, AddVolunteerPlace.class);
         startActivity(in);
     }
+    //signout if we get out of the page
     @Override
     public void onPause() {
         FirebaseAuth fauth = FirebaseAuth.getInstance();
