@@ -7,16 +7,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 public class Member implements SqlInterface{
-
-    //region Attribute
-    private String Members;
-    private String VID;
+    private int MID;
+    private int VID;
     private String UID;
     //endregion
 
     //region Constructors
-    public Member(String Members, String VID, String UID){
-        this.Members=Members;
+    public Member( int VID, String UID){
         this.VID = VID;
         this.UID = UID;
     }
@@ -102,19 +99,11 @@ public class Member implements SqlInterface{
     //endregion
 
     //region Getter and Setter
-    public String getMembers() {
-        return Members;
-    }
-
-    public void setMembers(String Members) {
-        this.Members = Members;
-    }
-
-    public String getVid() {
+    public int getVid() {
         return VID;
     }
 
-    public void setVid(String VID) {
+    public void setVid(int VID) {
         this.VID =VID;
     }
 
@@ -124,6 +113,13 @@ public class Member implements SqlInterface{
 
     public void setUid(String UID) {
         this.UID = UID;
+    }
+    public int getMID() {
+        return MID;
+    }
+
+    public void setMID(int MID) {
+        this.MID = MID;
     }
 
     //endregion
