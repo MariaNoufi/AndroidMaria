@@ -77,14 +77,14 @@ public class Member implements SqlInterface{
                 sortOrder);
         return c;
     }
-    public Cursor SelectByUserId(SQLiteDatabase db, int userid) {
+    public boolean IsExist(SQLiteDatabase db) {
         String[] projection = {
                 BaseColumns._ID,
                 COLUMN_USER_ID,
                 COLUMN_VOLUNTEER_ID
         };
-        String selection = BaseColumns._ID + " = ?";
-        String[] selectionArgs = { userid+"" };
+        String selection = COLUMN_USER_ID + " = ? " +COLUMN_VOLUNTEER_ID+" = ?";
+        String[] selectionArgs = {UID,VID+""};
 
 // How you want the results sorted in the resulting Cursor
         Cursor c = db.query(TABLE_MEMBER,
@@ -94,7 +94,7 @@ public class Member implements SqlInterface{
                 null,
                 null,
                 null);
-        return c;
+        return c!=null;
     }
     //endregion
 

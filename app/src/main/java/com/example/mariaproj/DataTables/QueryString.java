@@ -17,7 +17,7 @@ public class QueryString {
 
 
     //region create database
-    public static final String SQL_CREATE_CART =
+    public static final String SQL_CREATE_MEMBER =
             "CREATE TABLE " + MemberTable.TABLE_MEMBER + " (" +
                     MemberTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     MemberTable.COLUMN_VOLUNTEER_ID  + " INTEGER," +

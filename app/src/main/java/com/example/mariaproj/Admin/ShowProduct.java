@@ -57,7 +57,7 @@ public class ShowProduct extends AppCompatActivity implements AdapterView.OnItem
             c.moveToFirst();
             while(!c.isAfterLast()){
                     volunteer.setPid(c.getInt(c.getColumnIndexOrThrow(BaseColumns._ID)));
-                    volunteer.setActName(c.getString(c.getColumnIndexOrThrow(COLUMN_VOLUNTEER_PLACE)));
+                    volunteer.setPlace(c.getString(c.getColumnIndexOrThrow(COLUMN_VOLUNTEER_PLACE)));
                     volunteer.setPdescribtion(c.getString(c.getColumnIndexOrThrow(COLUMN_PLACE_DESCRIPTION)));
                     volunteer.setRequiredSup(c.getString(c.getColumnIndexOrThrow(COLUMN_REQUIRED_SUPPLIES)));
                     volunteer.setRequiredNumOfVolunteers(c.getDouble(c.getColumnIndexOrThrow(COLUMN_NUM_OF_VOLUNTEERS)));

@@ -58,7 +58,7 @@ public class VolunteerPlacesAdapter extends RecyclerView.Adapter<VolunteerPlaces
         Bitmap bm = BitmapFactory.decodeByteArray(images, 0 ,images.length);
 
         holder.nameOfVolunteer.setText(nameofVolunteer);
-        holder.ParticipantsNeeded.setText(participantsNeeded+"");
+        holder.ParticipantsNeeded.setText("Places Volunteer Left : "+participantsNeeded);
         holder. imageOfVolunteer.setImageBitmap(bm);
 
     }

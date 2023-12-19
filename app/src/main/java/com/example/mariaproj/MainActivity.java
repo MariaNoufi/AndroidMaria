@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.mariaproj.Admin.AddVolunteerPlace;
 import com.example.mariaproj.Admin.ShowProduct;
+import com.example.mariaproj.DataTables.DBHelper;
 import com.example.mariaproj.User.HomeFragment;
 import com.example.mariaproj.User.InfoFragment;
 import com.example.mariaproj.User.NotificationFragment;
@@ -25,6 +26,8 @@ import com.example.mariaproj.User.ShoppingFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import static com.example.mariaproj.DataTables.QueryString.SQL_CREATE_MEMBER;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 TextView username,email;
@@ -35,7 +38,10 @@ TextView username,email;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+       /* DBHelper dbHelper = new DBHelper(this);
+        dbHelper.OpenWriteAble();
+        dbHelper.getDb().execSQL(SQL_CREATE_MEMBER);
+        dbHelper.Close();*/
         Toolbar toolbar = findViewById(R.id.toolbar); //Ignore red line errors
         setSupportActionBar(toolbar);
         fauth= FirebaseAuth.getInstance();

@@ -13,9 +13,6 @@ public class Volunteer implements SqlInterface{
     //region Attribute
     protected int pid;
     protected String place;
-
-
-
     protected String Pdescribtion;
     protected String requiredSup;
 
@@ -161,13 +158,6 @@ public class Volunteer implements SqlInterface{
         this.pid = pid;
     }
 
-    public String getActName() {
-        return place;
-    }
-
-    public void setActName(String place) {
-        this.place = place;
-    }
 
     public String getPdescribtion() {
         return Pdescribtion;

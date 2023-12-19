@@ -38,6 +38,7 @@ public class ProductInfo extends AppCompatActivity  {
     TextView  numOfRegisteredVolunteers, requiredNumOfVolunteers;
     DBHelper dbHelper;
     String selectedid;
+    Cursor c;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,11 +65,9 @@ public class ProductInfo extends AppCompatActivity  {
         Log.d("Product","123");
         dbHelper.OpenReadAble();
         Volunteer p=new Volunteer();
-        Cursor c = p.SelectById(dbHelper.getDb(),selectedid);
-
+        c = p.SelectById(dbHelper.getDb(),selectedid);
         if(c!=null){
             c.moveToFirst();
-
             volunteerPlace.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_VOLUNTEER_PLACE)));
             VPdescription.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_PLACE_DESCRIPTION)));
             numOfRegisteredVolunteers.setText(c.getDouble(c.getColumnIndexOrThrow(COLUMN_REGISTERED_VOLUNTEERS))+"");
@@ -85,11 +84,27 @@ public class ProductInfo extends AppCompatActivity  {
         FirebaseUser curruser = fauth.getCurrentUser();
         // getting the values from our views
         dbHelper.OpenWriteAble();
-        Member cart = new Member(Integer.parseInt(selectedid),curruser.getUid());
-        cart.Add(dbHelper.getDb());
-        dbHelper.Close();
-        Toast.makeText(getBaseContext(), "Added To Cart", Toast.LENGTH_SHORT).show();
+        Volunteer v = setSelectedVolunterNumOfRegister();
+        Member member = new Member(Integer.parseInt(selectedid),curruser.getUid());
+        if(!member.IsExist(dbHelper.getDb())){
+            member.Add(dbHelper.getDb());
+            v.Update(dbHelper.getDb(),v.getPid());
+            dbHelper.Close();
+            Toast.makeText(getBaseContext(), "Thank you "+curruser.getDisplayName()+" to my volunter family", Toast.LENGTH_SHORT).show();
+        }
+       else
+            Toast.makeText(getBaseContext(), "You "+curruser.getDisplayName()+" already registered", Toast.LENGTH_SHORT).show();
 
-
+    }
+    private Volunteer setSelectedVolunterNumOfRegister(){
+        Volunteer v= new Volunteer();
+        v.setPlace(c.getString(c.getColumnIndexOrThrow(COLUMN_VOLUNTEER_PLACE)));
+        v.setImageByte(c.getBlob(c.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE)));
+        v.setPdescribtion(c.getString(c.getColumnIndexOrThrow(COLUMN_PLACE_DESCRIPTION)));
+        v.setPid(Integer.parseInt(selectedid));
+        v.setRequiredSup(c.getString(c.getColumnIndexOrThrow(COLUMN_REQUIRED_SUPPLIES)));
+        v.setRequiredNumOfVolunteers(c.getDouble(c.getColumnIndexOrThrow(COLUMN_NUM_OF_VOLUNTEERS)));
+        v.setNumOfRegisteredVolunteers(c.getDouble(c.getColumnIndexOrThrow(COLUMN_REGISTERED_VOLUNTEERS))+1);
+        return v;
     }
 }

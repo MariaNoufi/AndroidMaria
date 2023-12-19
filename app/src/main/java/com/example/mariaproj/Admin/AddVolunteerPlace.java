@@ -138,7 +138,7 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
 
             if(view.getId()==R.id.btUpdate){
                 volunteer.setPid(Integer.parseInt(selectedId));
-                volunteer.setActName(etPlace.getText().toString());
+                volunteer.setPlace(etPlace.getText().toString());
                 volunteer.setPdescribtion(etPdescribtion.getText().toString());
                 volunteer.setRequiredSup(etrequiredSup.getText().toString());
                 volunteer.setRequiredNumOfVolunteers(Double.parseDouble(etrequiredNumOfVolunteers.getText().toString()));
