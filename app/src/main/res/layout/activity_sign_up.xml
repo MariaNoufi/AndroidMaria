@@ -5,18 +5,26 @@
     android:id="@+id/PasswordT"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#68D6CC"
     tools:context=".SignUpActivity"
     tools:visibility="visible">
 
-    <Switch
-        android:id="@+id/swisadmin"
+    <Button
+        android:id="@+id/btRegister"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="12dp"
-        android:text="Admin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="179dp"
+        android:layout_marginTop="103dp"
+        android:background="#000000"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/russo_one"
+        android:text="Register"
+        android:textColorLink="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etRePass"
+        app:rippleColor="#009688"
+        app:strokeColor="#009688"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/etadmincode"
@@ -32,18 +40,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/swisadmin"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/btRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="179dp"
-        android:layout_marginTop="103dp"
-        android:text="Register"
-        android:textColorLink="#D5C7C7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRePass"
-        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/etEmailUser"
@@ -94,12 +90,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etadmincode" />
 
+    <Switch
+        android:id="@+id/swisadmin"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/russo_one"
+        android:text="Admin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="140dp"
         android:layout_height="46dp"
         android:layout_marginEnd="136dp"
         android:layout_marginTop="40dp"
+        android:fontFamily="@font/russo_one"
         android:text="SignUp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -116,7 +124,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btRegister"
         tools:visibility="gone" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
