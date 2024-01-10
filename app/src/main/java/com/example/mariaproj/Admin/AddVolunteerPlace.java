@@ -56,7 +56,6 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
         imageButton = findViewById(R.id.imageButton);
         btadd = findViewById(R.id.addButton);
         btadd.setOnClickListener(this);
-        //change
         btupdate = findViewById(R.id.btUpdate);
         btupdate.setOnClickListener(this);
         btdelete = findViewById(R.id.btDelete);
@@ -116,27 +115,28 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         /*add product to data base*/
-        if(view.getId()==R.id.addButton){
+        if(view.getId()==R.id.addButton) {
             dbHelper.OpenWriteAble();
             dbHelper = new DBHelper(this);
 
-            byte[] data  = imageViewToByte();
-            volunteer=new Volunteer(etPlace.getText().toString(),
+            byte[] data = imageViewToByte();
+            volunteer = new Volunteer(etPlace.getText().toString(),
                     etPdescribtion.getText().toString(),
                     etrequiredSup.getText().toString(),
                     Double.parseDouble(etrequiredNumOfVolunteers.getText().toString()),
-                    Double.parseDouble(etnumOfRegisteredVolunteers.getText().toString()),data);
+                    Double.parseDouble(etnumOfRegisteredVolunteers.getText().toString()), data);
             dbHelper.OpenWriteAble();//open data base for writeable
-            if(volunteer.Add(dbHelper.getDb())>-1){//add to data base
+            if (volunteer.Add(dbHelper.getDb()) > -1) {//add to data base
                 Toast.makeText(this, "Added Successfully", Toast.LENGTH_SHORT).show();
                 dbHelper.Close();
                 //move to another page
-                Intent i = new Intent(this,ShowProduct.class);
+                Intent i = new Intent(this, ShowProduct.class);
                 startActivity(i);
             }
             /*update product in the data base*/
-
+        }
             if(view.getId()==R.id.btUpdate){
+
                 volunteer.setPid(Integer.parseInt(selectedId));
                 volunteer.setPlace(etPlace.getText().toString());
                 volunteer.setPdescribtion(etPdescribtion.getText().toString());
@@ -162,8 +162,6 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
                  Intent i = new Intent(this,ShowProduct.class);
                  startActivity(i);
             }
-
-        }
         if(view.getId()==R.id.imageButton){
             Intent gallery = new Intent(Intent.ACTION_PICK,
                     MediaStore.Images.Media.INTERNAL_CONTENT_URI);
