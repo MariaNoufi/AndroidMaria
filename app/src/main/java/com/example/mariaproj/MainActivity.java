@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.mariaproj.Admin.AddVolunteerPlace;
 import com.example.mariaproj.Admin.ShowProduct;
+import com.example.mariaproj.Class.Volunteer;
 import com.example.mariaproj.DataTables.DBHelper;
 import com.example.mariaproj.User.HomeFragment;
 import com.example.mariaproj.User.InfoFragment;
@@ -28,6 +29,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import static com.example.mariaproj.DataTables.QueryString.SQL_CREATE_MEMBER;
+import static com.example.mariaproj.DataTables.QueryString.SQL_CREATE_PRODUCT;
+import static com.example.mariaproj.DataTables.QueryString.SQL_DELETE_PRODUCT;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 TextView username,email;
@@ -38,9 +41,9 @@ TextView username,email;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       /* DBHelper dbHelper = new DBHelper(this);
+        /*DBHelper dbHelper = new DBHelper(this);
         dbHelper.OpenWriteAble();
-        dbHelper.getDb().execSQL(SQL_CREATE_MEMBER);
+        new Volunteer().Delete(dbHelper.getDb(),10);
         dbHelper.Close();*/
         Toolbar toolbar = findViewById(R.id.toolbar); //Ignore red line errors
         setSupportActionBar(toolbar);
@@ -56,7 +59,7 @@ TextView username,email;
             }
             
             // user is signed in
-            View header = navigationView.getHeaderView(0);
+           View header = navigationView.getHeaderView(0);
             username = header.findViewById(R.id.username);
             email = header.findViewById(R.id.email);
             username.setText(user.getDisplayName());
