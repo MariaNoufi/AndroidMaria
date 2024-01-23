@@ -70,8 +70,8 @@ public class ProductInfo extends AppCompatActivity  {
             c.moveToFirst();
             volunteerPlace.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_VOLUNTEER_PLACE)));
             VPdescription.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_PLACE_DESCRIPTION)));
-            numOfRegisteredVolunteers.setText(c.getDouble(c.getColumnIndexOrThrow(COLUMN_REGISTERED_VOLUNTEERS))+"");
-            requiredNumOfVolunteers.setText("Requiered : "+c.getDouble(c.getColumnIndexOrThrow(COLUMN_NUM_OF_VOLUNTEERS)));
+            numOfRegisteredVolunteers.setText((int)c.getDouble(c.getColumnIndexOrThrow(COLUMN_REGISTERED_VOLUNTEERS))+"");
+            requiredNumOfVolunteers.setText("Requiered : "+(int)c.getDouble(c.getColumnIndexOrThrow(COLUMN_NUM_OF_VOLUNTEERS)));
             byte[] image = c.getBlob(c.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE));
             Bitmap bm = BitmapFactory.decodeByteArray(image, 0 ,image.length);
             imageView.setImageBitmap(bm);
@@ -103,8 +103,8 @@ public class ProductInfo extends AppCompatActivity  {
         v.setPdescribtion(c.getString(c.getColumnIndexOrThrow(COLUMN_PLACE_DESCRIPTION)));
         v.setPid(Integer.parseInt(selectedid));
         v.setRequiredSup(c.getString(c.getColumnIndexOrThrow(COLUMN_REQUIRED_SUPPLIES)));
-        v.setRequiredNumOfVolunteers(c.getDouble(c.getColumnIndexOrThrow(COLUMN_NUM_OF_VOLUNTEERS)));
-        v.setNumOfRegisteredVolunteers(c.getDouble(c.getColumnIndexOrThrow(COLUMN_REGISTERED_VOLUNTEERS))+1);
+        v.setRequiredNumOfVolunteers((int)c.getDouble(c.getColumnIndexOrThrow(COLUMN_NUM_OF_VOLUNTEERS)));
+        v.setNumOfRegisteredVolunteers((int)c.getDouble(c.getColumnIndexOrThrow(COLUMN_REGISTERED_VOLUNTEERS))+1);
         return v;
     }
 }
