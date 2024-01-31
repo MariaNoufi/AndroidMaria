@@ -123,8 +123,8 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
             volunteer = new Volunteer(etPlace.getText().toString(),
                     etPdescribtion.getText().toString(),
                     etrequiredSup.getText().toString(),
-                    Double.parseDouble(etrequiredNumOfVolunteers.getText().toString()),
-                    Double.parseDouble(etnumOfRegisteredVolunteers.getText().toString()), data);
+                    Integer.parseInt(etrequiredNumOfVolunteers.getText().toString()),
+                    Integer.parseInt(etnumOfRegisteredVolunteers.getText().toString()), data);
             dbHelper.OpenWriteAble();//open data base for writeable
             if (volunteer.Add(dbHelper.getDb()) > -1) {//add to data base
                 Toast.makeText(this, "Added Successfully", Toast.LENGTH_SHORT).show();
@@ -141,8 +141,8 @@ public class AddVolunteerPlace extends AppCompatActivity implements View.OnClick
                 volunteer.setPlace(etPlace.getText().toString());
                 volunteer.setPdescribtion(etPdescribtion.getText().toString());
                 volunteer.setRequiredSup(etrequiredSup.getText().toString());
-                volunteer.setRequiredNumOfVolunteers(Double.parseDouble(etrequiredNumOfVolunteers.getText().toString()));
-                volunteer.setNumOfRegisteredVolunteers(Double.parseDouble(etnumOfRegisteredVolunteers.getText().toString()));
+                volunteer.setRequiredNumOfVolunteers(Integer.parseInt(etrequiredNumOfVolunteers.getText().toString()));
+                volunteer.setNumOfRegisteredVolunteers(Integer.parseInt(etnumOfRegisteredVolunteers.getText().toString()));
                 if(SelectedNewImage)
                     volunteer.setImageByte(imageViewToByte());
                 else

@@ -9,8 +9,8 @@ public class QueryString {
                     VolunteerTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     VolunteerTable.COLUMN_VOLUNTEER_PLACE + " TEXT," +
                     VolunteerTable.COLUMN_PLACE_DESCRIPTION  + " TEXT," +
-                    VolunteerTable.COLUMN_REGISTERED_VOLUNTEERS+ " DOUBLE,"+
-                    VolunteerTable.COLUMN_NUM_OF_VOLUNTEERS+ " DOUBLE,"+
+                    VolunteerTable.COLUMN_REGISTERED_VOLUNTEERS+ " INTEGER,"+
+                    VolunteerTable.COLUMN_NUM_OF_VOLUNTEERS+ " INTEGER,"+
                     VolunteerTable.COLUMN_PRODUCT_IMAGE + " BLOB,"+
                     VolunteerTable.COLUMN_REQUIRED_SUPPLIES + " Text);";
 

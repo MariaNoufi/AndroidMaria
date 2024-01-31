@@ -173,7 +173,7 @@ public class Volunteer implements SqlInterface{
         return requiredNumOfVolunteers;
     }
 
-    public void setRequiredNumOfVolunteers(double requiredNumOfVolunteers) {
+    public void setRequiredNumOfVolunteers(int requiredNumOfVolunteers) {
         this.requiredNumOfVolunteers = requiredNumOfVolunteers;
     }
 
@@ -181,7 +181,7 @@ public class Volunteer implements SqlInterface{
         return numOfRegisteredVolunteers;
     }
 
-    public void setNumOfRegisteredVolunteers(double numOfRegisteredVolunteers) {
+    public void setNumOfRegisteredVolunteers(int numOfRegisteredVolunteers) {
         this.numOfRegisteredVolunteers =numOfRegisteredVolunteers;
     }
     public void setImageByte(byte[] imageByte) {

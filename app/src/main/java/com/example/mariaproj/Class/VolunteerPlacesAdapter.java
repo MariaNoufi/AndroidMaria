@@ -44,7 +44,7 @@ public class VolunteerPlacesAdapter extends RecyclerView.Adapter<VolunteerPlaces
         return new ViewHolder(view);
 
     }
-    // fill thevolunteer(place) data in the recycle items
+    // fill the volunteer(place) data in the recycle items
 
     @Override
     public void onBindViewHolder( ViewHolder holder, int position) {
@@ -52,13 +52,13 @@ public class VolunteerPlacesAdapter extends RecyclerView.Adapter<VolunteerPlaces
         // here we will find the position and start setting the output on our views
 
         String nameofVolunteer= volunteerList.get(position).getPlace();
-        double participantsNeeded= volunteerList.get(position).getRequiredNumOfVolunteers()-
-                volunteerList.get(position).getNumOfRegisteredVolunteers();
+        double participantsNeeded= (int) (volunteerList.get(position).getRequiredNumOfVolunteers()-
+                        volunteerList.get(position).getNumOfRegisteredVolunteers());
         byte[] images = volunteerList.get(position).getImageByte();
         Bitmap bm = BitmapFactory.decodeByteArray(images, 0 ,images.length);
 
         holder.nameOfVolunteer.setText(nameofVolunteer);
-        holder.ParticipantsNeeded.setText("Places Volunteer Left : "+participantsNeeded);
+        holder.ParticipantsNeeded.setText("Places of  Volunteer Left : "+participantsNeeded);
         holder. imageOfVolunteer.setImageBitmap(bm);
 
     }

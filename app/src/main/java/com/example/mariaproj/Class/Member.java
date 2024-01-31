@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 public class Member implements SqlInterface{
     private int MID;
@@ -83,18 +84,19 @@ public class Member implements SqlInterface{
                 COLUMN_USER_ID,
                 COLUMN_VOLUNTEER_ID
         };
-        String selection = COLUMN_USER_ID + " = ? " +COLUMN_VOLUNTEER_ID+" = ?";
+        String selection = COLUMN_USER_ID + " = ? AND " +COLUMN_VOLUNTEER_ID+" = ?";
         String[] selectionArgs = {UID,VID+""};
 
 // How you want the results sorted in the resulting Cursor
         Cursor c = db.query(TABLE_MEMBER,
                 projection,
-                null,
-                null,
+                selection,
+                selectionArgs,
                 null,
                 null,
                 null);
-        return c!=null;
+        Log.d("length",c.getCount()+"");
+        return c.getCount() != 0;
     }
     //endregion
 

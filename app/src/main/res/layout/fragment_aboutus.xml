@@ -7,29 +7,33 @@
     android:background="#68D6CC"
     tools:context=".User.NotificationFragment">
 
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="316dp"
         android:layout_height="81dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/rowdies"
         android:text="I'm maria , a student in the ortodox arab college "
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
-
     <TextView
         android:id="@+id/textView9"
         android:layout_width="385dp"
         android:layout_height="243dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/rowdies"
         android:text="My project is about Volunteering since i think Volunteering is an important experience in anyone's life but specially for teens like me who are still developing their personalities so i created this app to help people shape their personalities in the best way possible "
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView5"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,9 +72,13 @@
         android:id="@+id/imageView5"
         android:layout_width="577dp"
         android:layout_height="153dp"
+        android:layout_marginBottom="8dp"
         android:src="@drawable/adventure2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
-        tools:layout_editor_absoluteX="14dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

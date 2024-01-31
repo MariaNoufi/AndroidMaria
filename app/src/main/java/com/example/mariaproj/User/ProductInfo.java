@@ -70,8 +70,8 @@ public class ProductInfo extends AppCompatActivity  {
             c.moveToFirst();
             volunteerPlace.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_VOLUNTEER_PLACE)));
             VPdescription.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_PLACE_DESCRIPTION)));
-            numOfRegisteredVolunteers.setText((int)c.getDouble(c.getColumnIndexOrThrow(COLUMN_REGISTERED_VOLUNTEERS))+"");
-            requiredNumOfVolunteers.setText("Requiered : "+(int)c.getDouble(c.getColumnIndexOrThrow(COLUMN_NUM_OF_VOLUNTEERS)));
+            numOfRegisteredVolunteers.setText(c.getInt(c.getColumnIndexOrThrow(COLUMN_REGISTERED_VOLUNTEERS))+"");
+            requiredNumOfVolunteers.setText("Requiered : "+c.getInt(c.getColumnIndexOrThrow(COLUMN_NUM_OF_VOLUNTEERS)));
             byte[] image = c.getBlob(c.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE));
             Bitmap bm = BitmapFactory.decodeByteArray(image, 0 ,image.length);
             imageView.setImageBitmap(bm);
@@ -84,16 +84,17 @@ public class ProductInfo extends AppCompatActivity  {
         FirebaseUser curruser = fauth.getCurrentUser();
         // getting the values from our views
         dbHelper.OpenWriteAble();
-        Volunteer v = setSelectedVolunterNumOfRegister();
         Member member = new Member(Integer.parseInt(selectedid),curruser.getUid());
         if(!member.IsExist(dbHelper.getDb())){
+            Volunteer v = setSelectedVolunterNumOfRegister();
             member.Add(dbHelper.getDb());
             v.Update(dbHelper.getDb(),v.getPid());
+            numOfRegisteredVolunteers.setText((int)(v.getNumOfRegisteredVolunteers())+"");
             dbHelper.Close();
-            Toast.makeText(getBaseContext(), "Thank you "+curruser.getDisplayName()+" to my volunter family", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Thank you "+curruser.getDisplayName()+" for joining our volunteer family", Toast.LENGTH_SHORT).show();
         }
        else
-            Toast.makeText(getBaseContext(), "You "+curruser.getDisplayName()+" already registered", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "oops "+curruser.getDisplayName()+" looks like you have already registerd  ", Toast.LENGTH_SHORT).show();
 
     }
     private Volunteer setSelectedVolunterNumOfRegister(){
@@ -103,8 +104,8 @@ public class ProductInfo extends AppCompatActivity  {
         v.setPdescribtion(c.getString(c.getColumnIndexOrThrow(COLUMN_PLACE_DESCRIPTION)));
         v.setPid(Integer.parseInt(selectedid));
         v.setRequiredSup(c.getString(c.getColumnIndexOrThrow(COLUMN_REQUIRED_SUPPLIES)));
-        v.setRequiredNumOfVolunteers((int)c.getDouble(c.getColumnIndexOrThrow(COLUMN_NUM_OF_VOLUNTEERS)));
-        v.setNumOfRegisteredVolunteers((int)c.getDouble(c.getColumnIndexOrThrow(COLUMN_REGISTERED_VOLUNTEERS))+1);
+        v.setRequiredNumOfVolunteers(c.getInt(c.getColumnIndexOrThrow(COLUMN_NUM_OF_VOLUNTEERS)));
+        v.setNumOfRegisteredVolunteers(c.getInt(c.getColumnIndexOrThrow(COLUMN_REGISTERED_VOLUNTEERS))+1);
         return v;
     }
 }

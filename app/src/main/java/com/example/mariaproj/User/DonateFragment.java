@@ -12,10 +12,10 @@ import com.example.mariaproj.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link ShoppingFragment#newInstance} factory method to
+ * Use the {@link DonateFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ShoppingFragment extends Fragment {
+public class DonateFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class ShoppingFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public ShoppingFragment() {
+    public DonateFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +39,8 @@ public class ShoppingFragment extends Fragment {
      * @return A new instance of fragment ShoppingFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ShoppingFragment newInstance(String param1, String param2) {
-        ShoppingFragment fragment = new ShoppingFragment();
+    public static DonateFragment newInstance(String param1, String param2) {
+        DonateFragment fragment = new DonateFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class ShoppingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shopping, container, false);
+        return inflater.inflate(R.layout.fragment_donate, container, false);
     }
 }

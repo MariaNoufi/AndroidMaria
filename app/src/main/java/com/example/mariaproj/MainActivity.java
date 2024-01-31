@@ -15,22 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-
-import com.example.mariaproj.Admin.AddVolunteerPlace;
 import com.example.mariaproj.Admin.ShowProduct;
-import com.example.mariaproj.Class.Volunteer;
-import com.example.mariaproj.DataTables.DBHelper;
 import com.example.mariaproj.User.HomeFragment;
 import com.example.mariaproj.User.InfoFragment;
 import com.example.mariaproj.User.NotificationFragment;
-import com.example.mariaproj.User.ShoppingFragment;
+import com.example.mariaproj.User.DonateFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import static com.example.mariaproj.DataTables.QueryString.SQL_CREATE_MEMBER;
-import static com.example.mariaproj.DataTables.QueryString.SQL_CREATE_PRODUCT;
-import static com.example.mariaproj.DataTables.QueryString.SQL_DELETE_PRODUCT;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 TextView username,email;
@@ -98,8 +90,8 @@ TextView username,email;
         else if(R.id.nav_notifications==item.getItemId()){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NotificationFragment()).commit();
         }
-        else if(R.id.nav_shopping==item.getItemId()){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ShoppingFragment()).commit();
+        else if(R.id.nav_donate==item.getItemId()){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DonateFragment()).commit();
         }
         else if(R.id.nav_logout==item.getItemId()){
             fauth.signOut();

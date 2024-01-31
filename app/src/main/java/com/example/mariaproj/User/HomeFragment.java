@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
             volunteer.setPlace(c.getString(c.getColumnIndexOrThrow(COLUMN_VOLUNTEER_PLACE)));
             volunteer.setPdescribtion(c.getString(c.getColumnIndexOrThrow(COLUMN_PLACE_DESCRIPTION)));
             volunteer.setRequiredSup(c.getString(c.getColumnIndexOrThrow(COLUMN_REQUIRED_SUPPLIES)));
-            volunteer.setRequiredNumOfVolunteers(c.getDouble(c.getColumnIndexOrThrow(COLUMN_NUM_OF_VOLUNTEERS)));
+            volunteer.setRequiredNumOfVolunteers(c.getInt(c.getColumnIndexOrThrow(COLUMN_NUM_OF_VOLUNTEERS)));
             volunteer.setNumOfRegisteredVolunteers(c.getInt(c.getColumnIndexOrThrow(COLUMN_REGISTERED_VOLUNTEERS)));
             volunteer.setImageByte(c.getBlob(c.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE)));
             VolunteerList.add(volunteer);
