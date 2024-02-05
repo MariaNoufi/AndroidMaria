@@ -86,7 +86,7 @@ public class ProductInfo extends AppCompatActivity  {
         dbHelper.OpenWriteAble();
         Member member = new Member(Integer.parseInt(selectedid),curruser.getUid());
         if(!member.IsExist(dbHelper.getDb())){
-            Volunteer v = setSelectedVolunterNumOfRegister();
+            Volunteer v = setSelectedVolunteerNumOfRegister();
             member.Add(dbHelper.getDb());
             v.Update(dbHelper.getDb(),v.getPid());
             numOfRegisteredVolunteers.setText((int)(v.getNumOfRegisteredVolunteers())+"");
@@ -97,7 +97,7 @@ public class ProductInfo extends AppCompatActivity  {
             Toast.makeText(getBaseContext(), "oops "+curruser.getDisplayName()+" looks like you have already registerd  ", Toast.LENGTH_SHORT).show();
 
     }
-    private Volunteer setSelectedVolunterNumOfRegister(){
+    private Volunteer setSelectedVolunteerNumOfRegister(){
         Volunteer v= new Volunteer();
         v.setPlace(c.getString(c.getColumnIndexOrThrow(COLUMN_VOLUNTEER_PLACE)));
         v.setImageByte(c.getBlob(c.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE)));
