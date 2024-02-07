@@ -23,6 +23,8 @@ public class DonateFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+
+
             }
         });
 
