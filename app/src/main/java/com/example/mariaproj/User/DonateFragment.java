@@ -13,6 +13,7 @@ import com.example.mariaproj.R;
 
 public class DonateFragment extends Fragment {
     ImageView donateimage;
+    LayoutInflater donations;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -22,8 +23,8 @@ public class DonateFragment extends Fragment {
         donateimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
+                View v = inflater.inflate(R.layout.fragment_donate, container, false);
+                donations = v.findViewById(R.id.donate;
 
             }
         });
