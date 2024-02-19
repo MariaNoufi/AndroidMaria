@@ -29,9 +29,9 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
-        android:src="@drawable/dodo"
         android:clickable="true"
         android:onClick="onClick"
+        android:src="@drawable/dodo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,60 +43,72 @@
         android:layout_height="320dp"
         android:background="#FFFFFF"
         android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@+id/ivDonate"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivDonate">
 
         <Button
             android:id="@+id/submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="175dp"
+            android:layout_marginTop="176dp"
             android:text="Submit"
-            tools:layout_editor_absoluteX="149dp"
-            tools:layout_editor_absoluteY="223dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/HowMuch" />
 
         <CheckBox
             android:id="@+id/twoH"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="68dp"
+            android:layout_marginTop="60dp"
             android:text="200"
-            tools:layout_editor_absoluteX="63dp"
-            tools:layout_editor_absoluteY="152dp" />
+            app:layout_constraintEnd_toStartOf="@+id/youChoose"
+            app:layout_constraintTop_toTopOf="@+id/oneH" />
 
         <CheckBox
             android:id="@+id/threeH"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="161dp"
+            android:layout_marginTop="28dp"
             android:text="300"
-            tools:layout_editor_absoluteX="188dp"
-            tools:layout_editor_absoluteY="90dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/HowMuch" />
 
         <CheckBox
             android:id="@+id/oneH"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="76dp"
+            android:layout_marginTop="28dp"
             android:text="100"
-            tools:layout_editor_absoluteX="63dp"
-            tools:layout_editor_absoluteY="91dp" />
+            app:layout_constraintEnd_toStartOf="@+id/threeH"
+            app:layout_constraintTop_toBottomOf="@+id/HowMuch" />
 
         <EditText
             android:id="@+id/youChoose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="88dp"
             android:ems="10"
             android:hint="other"
             android:inputType="text"
-            tools:layout_editor_absoluteX="185dp"
-            tools:layout_editor_absoluteY="152dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/HowMuch" />
 
         <TextView
             android:id="@+id/HowMuch"
             android:layout_width="379dp"
             android:layout_height="35dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginTop="28dp"
             android:fontFamily="@font/rowdies"
             android:text="How much would you like to donate?"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="16dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
