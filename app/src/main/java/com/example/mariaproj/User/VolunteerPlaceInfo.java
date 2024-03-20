@@ -3,23 +3,14 @@ package com.example.mariaproj.User;
 import static com.example.mariaproj.DataTables.TablesString.VolunteerTable.*;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.CursorLoader;
-import androidx.loader.content.Loader;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.BaseColumns;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +22,7 @@ import com.example.mariaproj.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class ProductInfo extends AppCompatActivity  {
+public class VolunteerPlaceInfo extends AppCompatActivity  {
     ImageView imageView;
     TextView  volunteerPlace,VPdescription;
     Button addmember;
@@ -52,7 +43,7 @@ public class ProductInfo extends AppCompatActivity  {
         dbHelper = new DBHelper(this);
         selectedid = getIntent().getExtras().getString("id");
         Log.d("Product","123");
-        setProduct();
+        setVolunteerPlace();
 
         addmember.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,8 +52,8 @@ public class ProductInfo extends AppCompatActivity  {
             }
         });
     }
-    private void setProduct() {
-        Log.d("Product","123");
+    private void setVolunteerPlace() {
+        Log.d("VolunteerPlace","123");
         dbHelper.OpenReadAble();
         Volunteer p=new Volunteer();
         c = p.SelectById(dbHelper.getDb(),selectedid);
@@ -89,7 +80,7 @@ public class ProductInfo extends AppCompatActivity  {
             Volunteer v = setSelectedVolunteerNumOfRegister();
             member.Add(dbHelper.getDb());
             v.Update(dbHelper.getDb(),v.getPid());
-            numOfRegisteredVolunteers.setText((int)(v.getNumOfRegisteredVolunteers())+"");
+            numOfRegisteredVolunteers.setText((v.getNumOfRegisteredVolunteers())+"");
             dbHelper.Close();
             Toast.makeText(getBaseContext(), "Thank you "+curruser.getDisplayName()+" for joining our volunteer family", Toast.LENGTH_SHORT).show();
         }

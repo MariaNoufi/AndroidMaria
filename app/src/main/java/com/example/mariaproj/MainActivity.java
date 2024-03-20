@@ -16,9 +16,8 @@ import android.widget.Toast;
 
 
 import com.example.mariaproj.Admin.ShowProduct;
+import com.example.mariaproj.User.AboutUsFragment;
 import com.example.mariaproj.User.HomeFragment;
-import com.example.mariaproj.User.InfoFragment;
-import com.example.mariaproj.User.NotificationFragment;
 import com.example.mariaproj.User.DonateFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -84,11 +83,8 @@ TextView username,email;
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
 
         }
-        else if(R.id.nav_information==item.getItemId()){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InfoFragment()).commit();
-        }
-        else if(R.id.nav_notifications==item.getItemId()){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NotificationFragment()).commit();
+        else if(R.id.nav_aboutUs==item.getItemId()){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutUsFragment()).commit();
         }
         else if(R.id.nav_donate==item.getItemId()){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DonateFragment()).commit();

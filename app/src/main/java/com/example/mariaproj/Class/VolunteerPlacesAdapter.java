@@ -8,20 +8,16 @@ package com.example.mariaproj.Class;
         import android.graphics.Bitmap;
         import android.graphics.BitmapFactory;
 
-        import android.os.Bundle;
-        import android.util.Log;
         import android.view.LayoutInflater;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.ImageView;
         import android.widget.TextView;
-        import android.widget.Toast;
 
         import androidx.recyclerview.widget.RecyclerView;
 
         import com.example.mariaproj.R;
-        import com.example.mariaproj.User.ProductInfo;
-        import com.example.mariaproj.User.Volunteer_info;
+        import com.example.mariaproj.User.VolunteerPlaceInfo;
 
 
         import java.util.List;
@@ -52,7 +48,7 @@ public class VolunteerPlacesAdapter extends RecyclerView.Adapter<VolunteerPlaces
         // here we will find the position and start setting the output on our views
 
         String nameofVolunteer= volunteerList.get(position).getPlace();
-        double participantsNeeded= (int) (volunteerList.get(position).getRequiredNumOfVolunteers()-
+        int participantsNeeded= (int) (volunteerList.get(position).getRequiredNumOfVolunteers()-
                         volunteerList.get(position).getNumOfRegisteredVolunteers());
         byte[] images = volunteerList.get(position).getImageByte();
         Bitmap bm = BitmapFactory.decodeByteArray(images, 0 ,images.length);
@@ -89,7 +85,7 @@ public class VolunteerPlacesAdapter extends RecyclerView.Adapter<VolunteerPlaces
 
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(v.getContext(), ProductInfo.class);
+            Intent intent = new Intent(v.getContext(), VolunteerPlaceInfo.class);
             intent.putExtra("id",volunteerList.get(getLayoutPosition()).getPid()+"");
             v.getContext().startActivity(intent);
         }

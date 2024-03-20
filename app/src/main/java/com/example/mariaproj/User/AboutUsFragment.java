@@ -15,7 +15,7 @@ import com.example.mariaproj.R;
  * Use the {@link NotificationFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NotificationFragment extends Fragment {
+public class AboutUsFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class NotificationFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public NotificationFragment() {
+    public AboutUsFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +39,8 @@ public class NotificationFragment extends Fragment {
      * @return A new instance of fragment NotificationFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NotificationFragment newInstance(String param1, String param2) {
-        NotificationFragment fragment = new NotificationFragment();
+    public static AboutUsFragment newInstance(String param1, String param2) {
+        AboutUsFragment fragment = new AboutUsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
