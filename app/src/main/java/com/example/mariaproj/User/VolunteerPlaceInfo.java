@@ -48,7 +48,7 @@ public class VolunteerPlaceInfo extends AppCompatActivity  {
         addmember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SaveCart();
+                RegisterPerson();
             }
         });
     }
@@ -70,7 +70,7 @@ public class VolunteerPlaceInfo extends AppCompatActivity  {
         dbHelper.Close();
 
     }
-    private void SaveCart() {
+    private void RegisterPerson() {
         FirebaseAuth fauth = FirebaseAuth.getInstance();
         FirebaseUser curruser = fauth.getCurrentUser();
         // getting the values from our views
